@@ -1,0 +1,44 @@
+{
+    "bridge_speed": [
+        "30"
+    ],
+    "default_acceleration": [
+        "5500"
+    ],
+    "from": "User",
+    "inherits": "0.20mm Standard @BBL A1M",
+    "initial_layer_infill_speed": [
+        "45"
+    ],
+    "initial_layer_print_height": "0.22",
+    "initial_layer_speed": [
+        "30"
+    ],
+    "inner_wall_speed": [
+        "170"
+    ],
+    "internal_solid_infill_speed": [
+        "160"
+    ],
+    "name": "0.20mm Standard @Creality PETG CR-PETG",
+    "outer_wall_acceleration": [
+        "3000"
+    ],
+    "outer_wall_speed": [
+        "90"
+    ],
+    "print_extruder_id": [
+        "1"
+    ],
+    "print_extruder_variant": [
+        "Direct Drive Standard"
+    ],
+    "print_settings_id": "0.20mm Standard @Creality PETG CR-PETG",
+    "sparse_infill_speed": [
+        "220"
+    ],
+    "top_surface_speed": [
+        "70"
+    ],
+    "version": "2.5.0.7"
+}

@@ -27,12 +27,39 @@ PETG often fails from three causes: too much cooling, moisture in the spool, and
 - stronger walls/layers
 - fewer random surface defects caused by wet filament
 
+## Process profile tuning (A1 mini specific)
+
+Selected mode: `balanced/speed`
+
+After adding `process/0.20mm Standard @Creality PETG CR-PETG.json`, the main print process overrides are:
+
+| Process setting | Base (A1 mini standard) | Current | Why this was changed |
+|---|---:|---:|---|
+| Initial layer speed | 50 mm/s | 30 mm/s | Still conservative for PETG adhesion, but faster than the quality-first preset. |
+| Initial layer infill speed | 105 mm/s | 45 mm/s | Reduces first-layer overload while recovering print time. |
+| Initial layer print height | 0.20 mm | 0.22 mm | Adds slight PETG clearance without the full slowdown of 0.24 mm. |
+| Initial layer acceleration | 500 mm/s^2 | 500 mm/s^2 | Kept conservative for stable first-layer deposition. |
+| Outer wall speed | 200 mm/s | 90 mm/s | Preserves visible-wall quality while reducing total print time. |
+| Inner wall speed | 300 mm/s | 170 mm/s | Balanced throughput without pushing PETG flow too hard. |
+| Internal solid infill speed | 250 mm/s | 160 mm/s | Faster solid fill while staying in a safer PETG range. |
+| Sparse infill speed | 270 mm/s | 220 mm/s | Improves speed but remains less aggressive than default A1 mini values. |
+| Top surface speed | 200 mm/s | 70 mm/s | Keeps top quality acceptable with less time penalty. |
+| Bridge speed | 50 mm/s | 30 mm/s | Faster than quality-first while still PETG-safe for most bridges. |
+| Default acceleration | 6000 mm/s^2 | 5500 mm/s^2 | Near-stock motion for speed, with a small quality margin. |
+| Outer wall acceleration | 5000 mm/s^2 | 3000 mm/s^2 | Faster than quality-first but still helps limit wall artifacts. |
+
+These process changes are intentionally balanced between reliability and print time. If needed, tune in small steps (+10 to +20 mm/s on inner/sparse first) while monitoring first layer behavior, bridges, and top surfaces.
+
 ## References used
 
 - Reddit Creality PETG community thread: https://www.reddit.com/r/Creality/comments/1d9ld0x/creality_petg/
 - Community profile examples and discussions for CR-PETG temperature/speed:
   - https://forum.creality.com/t/creality-print-5-1-and-petg-no-profiles/12224
+  - https://forum.creality.com/t/extruder-jamming-printing-cr-petg/41051
+  - https://forum.creality.com/t/nozzle-snot-with-petg/36211
+  - https://forum.creality.com/t/cr-petg-on-k1-max-print-speed/36393
   - https://www.reddit.com/r/BambuLab/comments/1k6qghd/printing_creality_hyper_petg_with_bambu_lab_a1/
 - General PETG guidance (typical nozzle/bed/fan ranges):
   - https://store.creality.com/blog/creality-filament-printing-settings
   - https://www.crealityexperts.com/printing-with-petg-tips-tricks
+  - https://bambulab.com/en-us/filament/petg-hf
