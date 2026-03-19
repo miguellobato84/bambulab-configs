@@ -27,6 +27,31 @@ PETG often fails from three causes: too much cooling, moisture in the spool, and
 - stronger walls/layers
 - fewer random surface defects caused by wet filament
 
+## Deeplee PLA White tuning (A1 mini 0.4 nozzle)
+
+This profile keeps the existing A1 mini PLA baseline but makes the Deeplee-specific changes supported by the research report.
+
+| Setting | Previous | Current | Expected outcome (plain language) |
+|---|---:|---:|---|
+| Nozzle temperature | 220 C | 210 C | Matches the recommended starting point for this PLA and reduces the chance of stringing or overheating. |
+| Nozzle range | 190-240 C | 190-220 C | Keeps tuning inside the published working range for the filament. |
+| Cool plate temperature | 35 C | 60 C | Brings bed temperature into the PLA-safe range from the report instead of using an unusually low value. |
+| Fan minimum speed | 60% | 100% | Gives stronger PLA cooling once layer cooling is active. |
+| Fan maximum speed | 80% | 100% | Lets the profile reach full cooling for small layers and bridges. |
+| Full fan speed layer | 0 | 2 | Implements "full cooling from the second layer onward" while leaving the first layer protected. |
+| Filament density | 1.26 g/cm^3 | 1.20 g/cm^3 | Aligns spool calculations with the best public spec found for Deeplee PLA. |
+| Max volumetric speed | 21 mm^3/s | 12 mm^3/s | Uses a safer throughput limit for a third-party PLA on the A1 mini until you validate the spool. |
+| Filament notes | empty | Added conservative baseline + calibration order | Documents the intended starting point and the next tuning steps. |
+
+## Why this should help
+
+The Deeplee report pointed to three practical constraints for this spool on an A1 mini: use a moderate PLA nozzle temperature, keep bed temperature around 60 C, and do not assume the hotend can sustain Bambu-grade flow rates with a third-party filament. These changes target those constraints directly, so the expected result is:
+
+- fewer strings and overheated surfaces
+- more reliable first layers on the A1 mini
+- lower risk of under-extrusion or extruder clicking at speed
+- a better baseline for later tuning of flow and retraction
+
 ## Process profile tuning (A1 mini specific)
 
 Selected mode: `balanced/speed`
